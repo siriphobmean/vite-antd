@@ -3,10 +3,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import Home from "./pages/Home";
+import AppLayout from "./components/AppLayout";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const token = localStorage.getItem("token");
-  return token ? <>{children}</> : <Navigate to="/login" />;
+  return token ? <>{children}</> : <Navigate to="/" />;
 };
 
 const App: React.FC = () => {
@@ -14,14 +15,17 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+
       <Route
-        path="/home"
+        path="/"
         element={
           <ProtectedRoute>
-            <Home />
+            <AppLayout />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route path="home" element={<Home />} />
+      </Route>
     </Routes>
   );
 };

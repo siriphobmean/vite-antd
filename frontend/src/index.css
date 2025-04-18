@@ -10,10 +10,6 @@
   margin: 0;
 } */
 
-/* .ant-input-affix-wrapper >input.ant-input {
-  font-family: 'Kanit';
-} */
-
 .ant-input::placeholder {
   font-family: 'Kanit';
 }

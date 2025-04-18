@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Form,
@@ -47,6 +47,31 @@ const LoginPage: React.FC = () => {
     }, 1000);
   };
 
+  // const onFinish = (values: any) => {
+  //   setLoading(true);
+
+  //   if (remember) {
+  //     localStorage.setItem("rememberedUsername", values.username);
+  //   } else {
+  //     localStorage.removeItem("rememberedUsername");
+  //   }
+
+  //   setTimeout(() => {
+  //     if (values.username === "admin" && values.password === "1234") {
+  //       localStorage.setItem("token", "mock-token");
+  //       message.success("เข้าสู่ระบบสำเร็จ");
+  //       setIsFadingOut(true);
+
+  //       setTimeout(() => {
+  //         navigate("/home");
+  //       }, 500);
+  //     } else {
+  //       message.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+  //     }
+  //     setLoading(false);
+  //   }, 1000);
+  // };
+
   const handleRegisterClick = () => {
     setIsFadingOut(true);
     setTimeout(() => {
@@ -54,17 +79,18 @@ const LoginPage: React.FC = () => {
     }, 500); // เวลาเดียวกับ animation
   };
 
+  useEffect(() => {
+    const rememberedUsername = localStorage.getItem("rememberedUsername");
+    if (rememberedUsername) {
+      setRemember(true);
+    }
+  }, []);
+
   return (
     <>
-      {/* <div className="stars" />
-      <div className="shooting-star" />
-      <div className="shooting-star" />
-      <div className="shooting-star" />
-      <div className="shooting-star" />
-      <div className="shooting-star" /> */}
-      <div className="wave"></div>
-      <div className="wave"></div>
-      <div className="wave"></div>
+      <div className="wave" />
+      <div className="wave" />
+      <div className="wave" />
       <div
         style={{
           height: "100vh",

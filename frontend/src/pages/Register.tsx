@@ -1,4 +1,3 @@
-// src/pages/Register.tsx
 import React, { useState } from "react";
 import { Button, Form, Input, Card, Col, Row, Typography, message } from "antd";
 import {
@@ -49,12 +48,6 @@ const RegisterPage: React.FC = () => {
 
   return (
     <>
-      {/* <div className="stars" />
-      <div className="shooting-star" />
-      <div className="shooting-star" />
-      <div className="shooting-star" />
-      <div className="shooting-star" />
-      <div className="shooting-star" /> */}
       <div className="wave"></div>
       <div className="wave"></div>
       <div className="wave"></div>
