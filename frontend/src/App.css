@@ -1,0 +1,12 @@
+.ant-card {
+  border-radius: 10px;
+}
+
+.ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+.ant-card-body {
+  padding: 30px;
+}
