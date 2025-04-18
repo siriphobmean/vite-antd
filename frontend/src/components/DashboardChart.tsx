@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'antd'
 import { Bar } from 'react-chartjs-2'
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
 
@@ -25,7 +26,9 @@ const options = {
 }
 
 const DashboardChart: React.FC = () => {
-  return <Bar data={data} options={options} />
+  return <Card style={{ boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+    <Bar data={data} options={options} />
+  </Card>
 }
 
 export default DashboardChart

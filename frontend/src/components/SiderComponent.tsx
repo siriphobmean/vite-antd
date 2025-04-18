@@ -1,6 +1,10 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import { DashboardOutlined, UserOutlined, FileTextOutlined } from "@ant-design/icons";
+import {
+  DashboardOutlined,
+  UserOutlined,
+  FileTextOutlined,
+} from "@ant-design/icons";
 
 const { Sider } = Layout;
 
@@ -19,7 +23,12 @@ const SiderComponent: React.FC<SiderProps> = ({ collapsed }) => {
           margin: "16px 0",
         }}
       >
-        👨‍💻 {!collapsed && "Admin Panel"}
+        <img
+          src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+          alt="Admin Icon"
+          style={{ width: "30px", height: "30px" }}
+        />{" "}
+        {!collapsed && "Ant Design"}
       </div>
       <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
         <Menu.Item key="1" icon={<DashboardOutlined />}>
