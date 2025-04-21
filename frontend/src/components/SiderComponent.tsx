@@ -1,10 +1,11 @@
 import React from "react";
-import { Layout, Menu } from "antd";
+import { Divider, Layout, Menu } from "antd";
 import {
   DashboardOutlined,
   UserOutlined,
   FileTextOutlined,
 } from "@ant-design/icons";
+import logo from "../assets/SUT_ENG_LOGO/ENGi Logo-White.png";
 
 const { Sider } = Layout;
 
@@ -14,7 +15,12 @@ interface SiderProps {
 
 const SiderComponent: React.FC<SiderProps> = ({ collapsed }) => {
   return (
-    <Sider collapsible collapsed={collapsed} trigger={null}>
+    <Sider
+      collapsible
+      collapsed={collapsed}
+      trigger={null}
+      style={{ background: "#800020" }}
+    >
       <div
         style={{
           color: "#fff",
@@ -24,13 +30,25 @@ const SiderComponent: React.FC<SiderProps> = ({ collapsed }) => {
         }}
       >
         <img
-          src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-          alt="Admin Icon"
+          src={logo}
+          alt="ENGi Logo"
           style={{ width: "30px", height: "30px" }}
         />{" "}
-        {!collapsed && "Ant Design"}
+        {!collapsed && "ENGi SUT"}
       </div>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+      <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+        <Divider
+          style={{
+            borderColor: "white",
+          }}
+        />
+      </div>
+      <Menu
+        theme="dark"
+        mode="inline"
+        defaultSelectedKeys={["1"]}
+        style={{ background: "#800020" }}
+      >
         <Menu.Item key="1" icon={<DashboardOutlined />}>
           Dashboard
         </Menu.Item>

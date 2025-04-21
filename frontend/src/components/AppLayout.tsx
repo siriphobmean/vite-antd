@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, message } from "antd";
+import { ConfigProvider, Layout, message } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 import ProfileModal from "./ProfileModal";
 import FooterComponent from "./FooterComponent";
@@ -18,38 +18,45 @@ const AppLayout: React.FC<{ children?: React.ReactNode }> = () => {
   };
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <SiderComponent collapsed={collapsed} />
-      <Layout>
-        <HeaderComponent
-          collapsed={collapsed}
-          toggleCollapsed={toggleCollapsed}
-          onProfileClick={() => setIsProfileVisible(true)}
-          onLogoutClick={() => {
-            localStorage.removeItem("token");
-            message.success("ออกจากระบบสำเร็จ");
-            setTimeout(() => navigate("/"), 1000);
-          }}
-        />
-        <Content style={{ margin: "16px 16px" }}>
-          <div
-            style={{
-              padding: 24,
-              height: "100%",
-              background: "white",
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#800020",
+        },
+      }}
+    >
+      <Layout style={{ minHeight: "100vh" }}>
+        <SiderComponent collapsed={collapsed} />
+        <Layout>
+          <HeaderComponent
+            collapsed={collapsed}
+            toggleCollapsed={toggleCollapsed}
+            onProfileClick={() => setIsProfileVisible(true)}
+            onLogoutClick={() => {
+              localStorage.removeItem("token");
+              message.success("ออกจากระบบสำเร็จ");
+              setTimeout(() => navigate("/"), 1000);
             }}
-          >
-            <Outlet />
-          </div>
-        </Content>
-        <FooterComponent />
+          />
+          <Content style={{ margin: "16px 16px" }}>
+            <div
+              style={{
+                padding: 24,
+                height: "100%",
+                background: "white",
+              }}
+            >
+              <Outlet />
+            </div>
+          </Content>
+          <FooterComponent />
+        </Layout>
+        <ProfileModal
+          visible={isProfileVisible}
+          onClose={() => setIsProfileVisible(false)}
+        />
       </Layout>
-      <ProfileModal
-        visible={isProfileVisible}
-        onClose={() => setIsProfileVisible(false)}
-        
-      />
-    </Layout>
+    </ConfigProvider>
   );
 };
 

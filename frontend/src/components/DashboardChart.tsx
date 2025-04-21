@@ -11,7 +11,7 @@ const data = {
     {
       label: 'Active Users',
       data: [12, 19, 3, 5, 2],
-      backgroundColor: '#1890ff',
+      backgroundColor: '#800020',
     },
   ],
 }

@@ -33,7 +33,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({ collapsed, toggleCollapsed, on
       />
       <Dropdown overlay={profileMenu} placement="bottomRight" arrow>
         <Space style={{ cursor: "pointer" }}>
-          <Avatar style={{ backgroundColor: "#1890ff" }}>S</Avatar>
+          <Avatar style={{ backgroundColor: "#800020" }}>S</Avatar>
           <span style={{ fontWeight: "bold" }}>Siriphob</span>
         </Space>
       </Dropdown>

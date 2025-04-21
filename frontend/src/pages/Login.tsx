@@ -9,14 +9,13 @@ import {
   Typography,
   message,
   Checkbox,
+  ConfigProvider,
+  Divider,
 } from "antd";
 import { useNavigate } from "react-router-dom";
-import {
-  UserOutlined,
-  LockOutlined,
-  AntDesignOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./LoginPage.css";
+import logo from "../assets/SUT_ENG_LOGO/ENGi Logo-Official.png";
 
 const { Title, Text, Link } = Typography;
 
@@ -91,113 +90,120 @@ const LoginPage: React.FC = () => {
       <div className="wave" />
       <div className="wave" />
       <div className="wave" />
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          overflow: "hidden",
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "#800020",
+          },
         }}
-        className={`login-page ${isFadingOut ? "fade-out" : ""}`} // 👈 เพิ่มคลาส
       >
-        <Row justify="center" align="middle" style={{ width: "100%" }}>
-          <Col xs={24} sm={18} md={10} lg={6}>
-            <Card
-              title={
-                <div style={{ textAlign: "center" }}>
-                  <AntDesignOutlined
-                    style={{ fontSize: "64px", color: "#1890ff" }}
-                  />
-                  <Title
-                    level={3}
-                    style={{
-                      marginTop: "8px",
-                      color: "#1890ff",
-                      fontFamily: "Kanit",
-                    }}
-                  >
-                    เข้าสู่ระบบ
-                  </Title>
-                </div>
-              }
-              bordered={false}
-              style={{
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                borderRadius: "10px",
-                padding: "20px",
-              }}
-            >
-              <Form
-                name="login"
-                onFinish={onFinish}
-                initialValues={{
-                  username: localStorage.getItem("rememberedUsername") || "",
+        <div
+          style={{
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+            overflow: "hidden",
+          }}
+          className={`login-page ${isFadingOut ? "fade-out" : ""}`}
+        >
+          <Row justify="center" align="middle" style={{ width: "100%" }}>
+            <Col xs={24} sm={18} md={10} lg={8}>
+              <Card
+                title={
+                  <div style={{ textAlign: "center" }}>
+                    <img src={logo} alt="ENGi Logo" style={{ width: "30%" }} />
+                    <Title
+                      level={3}
+                      style={{
+                        marginTop: "8px",
+                        color: "#800020",
+                        fontFamily: "Kanit",
+                        marginBottom: 0,
+                      }}
+                    >
+                      เข้าสู่ระบบ
+                    </Title>
+                  </div>
+                }
+                bordered={false}
+                headStyle={{
+                  borderBottom: "none", // <-- ลบเส้นใต้หัวข้อ
+                }}
+                style={{
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  borderRadius: "10px",
+                  padding: "20px",
                 }}
               >
-                <Form.Item
-                  name="username"
-                  rules={[{ required: true, message: "กรุณากรอกชื่อผู้ใช้" }]}
+                <Divider style={{ borderColor: "#d9d9d9", marginTop: 0 }} />
+                <Form
+                  name="login"
+                  onFinish={onFinish}
+                  initialValues={{
+                    username: localStorage.getItem("rememberedUsername") || "",
+                  }}
                 >
-                  <Input
-                    prefix={<UserOutlined />}
-                    placeholder="ชื่อผู้ใช้"
-                    size="large"
-                    autoComplete="off"
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  name="password"
-                  rules={[{ required: true, message: "กรุณากรอกรหัสผ่าน" }]}
-                >
-                  <Input.Password
-                    prefix={<LockOutlined />}
-                    placeholder="รหัสผ่าน"
-                    size="large"
-                  />
-                </Form.Item>
-
-                <Form.Item>
-                  <Checkbox
-                    checked={remember}
-                    onChange={(e) => setRemember(e.target.checked)}
+                  <Form.Item
+                    name="username"
+                    rules={[{ required: true, message: "กรุณากรอกชื่อผู้ใช้" }]}
                   >
-                    จำชื่อผู้ใช้
-                  </Checkbox>
-                </Form.Item>
+                    <Input
+                      prefix={<UserOutlined />}
+                      placeholder="ชื่อผู้ใช้"
+                      size="large"
+                      autoComplete="off"
+                    />
+                  </Form.Item>
 
-                <Form.Item>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    block
-                    size="large"
-                    loading={loading}
-                    style={{
-                      background: "#1890ff",
-                      borderColor: "#1890ff",
-                    }}
+                  <Form.Item
+                    name="password"
+                    rules={[{ required: true, message: "กรุณากรอกรหัสผ่าน" }]}
                   >
-                    เข้าสู่ระบบ
-                  </Button>
-                </Form.Item>
+                    <Input.Password
+                      prefix={<LockOutlined />}
+                      placeholder="รหัสผ่าน"
+                      size="large"
+                    />
+                  </Form.Item>
 
-                <div style={{ textAlign: "center" }}>
-                  <Text style={{ fontFamily: "kanit" }}>ยังไม่มีบัญชี?</Text>{" "}
-                  <Link
-                    onClick={handleRegisterClick}
-                    style={{ fontFamily: "kanit" }}
-                  >
-                    สมัครสมาชิก
-                  </Link>
-                </div>
-              </Form>
-            </Card>
-          </Col>
-        </Row>
-      </div>
+                  <Form.Item>
+                    <Checkbox
+                      checked={remember}
+                      onChange={(e) => setRemember(e.target.checked)}
+                    >
+                      จำชื่อผู้ใช้
+                    </Checkbox>
+                  </Form.Item>
+
+                  <Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      block
+                      size="large"
+                      loading={loading}
+                    >
+                      เข้าสู่ระบบ
+                    </Button>
+                  </Form.Item>
+
+                  <div style={{ textAlign: "center" }}>
+                    <Text style={{ fontFamily: "kanit" }}>ยังไม่มีบัญชี?</Text>{" "}
+                    <Link
+                      onClick={handleRegisterClick}
+                      style={{ fontFamily: "kanit", color: "#800020" }}
+                    >
+                      สมัครสมาชิก
+                    </Link>
+                  </div>
+                </Form>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+      </ConfigProvider>
     </>
   );
 };

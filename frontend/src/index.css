@@ -13,3 +13,15 @@
 .ant-input::placeholder {
   font-family: 'Kanit';
 }
+
+.ant-btn.ant-btn-block {
+  box-shadow: none;
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+  background-color: #a01336;
+}
+
+.ant-menu-dark .ant-menu-item-selected:hover {
+  background-color: #af193f;
+}

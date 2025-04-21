@@ -49,7 +49,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ visible, onClose }) => {
       style={{top: 50}}
     >
       <Space direction="vertical" style={{ width: "100%" }} align="center">
-        <Avatar size={64} icon={<UserOutlined />} style={{ backgroundColor: "#1890ff" }} />
+        <Avatar size={64} icon={<UserOutlined />} style={{ backgroundColor: "#800020" }} />
         <Title level={4} style={{ margin: 0 }}>Siriphob</Title>
         <Text type="secondary">siriphob@sut.ac.th</Text>
       </Space>
