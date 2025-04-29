@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Tag, Card, Space } from 'antd'
+import { Table, Tag, Card } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import { UserData } from '../data/mockData'
 
