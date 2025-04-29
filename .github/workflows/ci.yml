@@ -2,9 +2,9 @@ name: CI Frontend Vite
 
 on:
   push:
-    branches: [main]
+    branches: [engi-tone]
   pull_request:
-    branches: [main]
+    branches: [engi-tone]
 
 jobs:
   frontend:
